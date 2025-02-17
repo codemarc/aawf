@@ -1,0 +1,25 @@
+{
+  "name": "@codemarc/aawf",
+  "version": "1.0.0",
+  "description": "agentic ai worklow framework",
+  "main": "aawf",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "patch-package"
+  },
+  "author": "marc j. greenberg <marc@codemarc.net>",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "aawf": "aawf"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@codemarc/smashdata": "^1.0.2",
+    "patch-package": "^8.0.0"
+  },
+  "dependencies": {
+    "caporal": "^1.4.0",
+    "js-yaml": "^4.1.0"
+  }
+}

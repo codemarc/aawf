@@ -1,0 +1,40 @@
+#!/usr/bin/env node --no-warnings --env-file=.env.local
+import crypto from "node:crypto"
+import program from "caporal"
+import pak from "./package.json" assert { type: "json" }
+
+const { name, version, description } = pak
+
+try {
+  const awf = name.slice(name.indexOf("/") + 1)
+  program.name(awf)
+  program.version(version)
+  program.description(description)
+
+  // --------------------------------------------------------------
+  // init command
+  // --------------------------------------------------------------
+  program
+    .command("init", "create a new task or flow")
+    .argument("<kind>", "kind of object to create", ["task", "flow"])
+    .argument("<type>", "identifies the type of object")
+    .argument("<act>", "identifies the action for the object")
+    .action(initCommand)
+
+  program.parse(process.argv)
+} catch (e) {
+  console.error(e)
+  process.exit(1)
+}
+
+export async function initCommand(args, options, logger) {
+  const { kind, type, act } = args
+
+  if (kind === "task") {
+    logger.info(`Creating task ${type} ${act}`)
+  } else if (kind === "flow") {
+    logger.info(`Creating flow ${type} ${act}`)
+  } else {
+    logger.error("Invalid kind")
+  }
+}
