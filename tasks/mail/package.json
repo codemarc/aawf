@@ -15,13 +15,14 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@codemarc/smashdata": "^1.0.2",
     "patch-package": "^8.0.0"
   },
   "dependencies": {
     "caporal": "^1.4.0",
-    "imapflow": "^1.0.181",
     "chalk": "^5.4.1",
     "chalk-pipe": "^6.2.0",
+    "imapflow": "^1.0.181",
     "js-yaml": "^4.1.0"
   }
 }

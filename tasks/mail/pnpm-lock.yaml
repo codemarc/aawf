@@ -27,6 +27,9 @@ importers:
       '@biomejs/biome':
         specifier: ^1.9.4
         version: 1.9.4
+      '@codemarc/smashdata':
+        specifier: ^1.0.2
+        version: 1.0.2
       patch-package:
         specifier: ^8.0.0
         version: 8.0.0
@@ -85,6 +88,10 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@codemarc/smashdata@1.0.2':
+    resolution: {integrity: sha512-pHHqo0rcITgw6xhL/Yr4/EBd1pZnGcxKmtvRb0EVo1uRB+TK1lZA5bk4dykbrg4A+p5DtDYVi+kiohzwmUKrkA==}
+    hasBin: true
 
   '@yarnpkg/lockfile@1.1.0':
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
@@ -774,6 +781,8 @@ snapshots:
 
   '@biomejs/cli-win32-x64@1.9.4':
     optional: true
+
+  '@codemarc/smashdata@1.0.2': {}
 
   '@yarnpkg/lockfile@1.1.0': {}
 

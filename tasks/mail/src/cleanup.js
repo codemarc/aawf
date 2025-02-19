@@ -81,12 +81,16 @@ export async function cleanupCommand(args, options, logger) {
     u.info("connecting to mail server...")
     await client.connect()
 
-    await Promise.all([
-      clear(client, "Archive"),
-      empty(client, "Trash"),
-      empty(client, "Spam"),
-      empty(client, "Drafts")
-    ])
+    const promises = []
+    if (!options.noarchive) promises.push(clear(client, "Archive"))
+    else u.info("skipping archive")
+    if (!options.notrash) promises.push(empty(client, "Trash"))
+    else u.info("skipping trash")
+    if (!options.nospam) promises.push(empty(client, "Spam"))
+    else u.info("skipping spam")
+    if (!options.nodrafts) promises.push(empty(client, "Drafts"))
+    else u.info("skipping drafts")
+    await Promise.all(promises)
   } catch (err) {
     if (options.verbose) logger.debug(err.stack)
     else logger.error(err)

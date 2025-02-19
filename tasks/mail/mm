@@ -36,6 +36,10 @@ try {
   program
     .command("cleanup", "Cleanup mailboxes")
     .argument("<taskid>", "The configuration name for this configured task")
+    .option("-a, --noarchive", "do not empty archive folder")
+    .option("-t, --notrash", "do not empty trash folder")
+    .option("-s, --nospam", "do not empty spam folder")
+    .option("-d, --nodrafts", "do not empty drafts folder")
     .option("-q, --quiet", "quiet mode")
     .option("-v, --verbose", "verbose mode")
     .action(commands.cleanup)
