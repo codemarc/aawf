@@ -1,8 +1,8 @@
 {
-  "name": "@codemarc/aawf",
+  "name": "@codemarc/awf-tasks-mail",
   "version": "1.0.0",
-  "description": "agentic ai worklow framework",
-  "main": "aawf",
+  "description": "email processing tasks",
+  "main": "mm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "patch-package"
@@ -11,15 +11,15 @@
   "type": "module",
   "license": "MIT",
   "bin": {
-    "aawf": "aawf"
+    "mm": "mm"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@codemarc/smashdata": "^1.0.2",
     "patch-package": "^8.0.0"
   },
   "dependencies": {
     "caporal": "^1.4.0",
+    "imapflow": "^1.0.181",
     "chalk": "^5.4.1",
     "chalk-pipe": "^6.2.0",
     "js-yaml": "^4.1.0"

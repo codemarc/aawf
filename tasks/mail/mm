@@ -1,0 +1,47 @@
+#!/usr/bin/env node --no-warnings --env-file=../../.env.local
+
+import program from "caporal"
+import * as commands from "./src/commands.js"
+import pak from "./package.json" assert { type: "json" }
+import util from "./src/_util.js"
+
+const { name, version, description } = pak
+const u = new util()
+
+try {
+  const mm = name.slice(name.indexOf("/") + 1)
+  program.name(mm)
+  program.version(version)
+  program.description(description)
+
+  // ===========================================================================
+  // extract
+  // ===========================================================================
+  program
+    .command("extract", "Extract emails from a folder")
+    .argument("<taskid>", "The configuration name for this configured task")
+    .option("-d, --date", `specify date to scan (default: ${u.getScanDate()})`)
+    .option("-f, --folder", `specify folder to scan (default: ${u.getScanFolder()})`)
+    .option("-l, --limit", `limit number of emails to scan (default: ${u.getScanLimit()})`)
+    .option("-s, --skip", `skip number of emails to scan (default: ${u.getScanSkip()})`)
+    .option("-u, --unread", `select from unread emails (default: ${u.getScanUnread()})`)
+    .option("-t, --tagged", `select from tagged/flagged emails (default: ${u.getScanTagged()})`)
+    .option("-q, --quiet", "quiet output")
+    .option("-v, --verbose", "verbose output")
+    .action(commands.extract)
+
+  // =============================================================================
+  // cleanup
+  // =============================================================================
+  program
+    .command("cleanup", "Cleanup mailboxes")
+    .argument("<taskid>", "The configuration name for this configured task")
+    .option("-q, --quiet", "quiet mode")
+    .option("-v, --verbose", "verbose mode")
+    .action(commands.cleanup)
+
+  program.parse(process.argv)
+} catch (e) {
+  console.error(e)
+  process.exit(1)
+}
