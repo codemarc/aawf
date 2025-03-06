@@ -6,6 +6,29 @@ new items are added to the top of the file below the line.
 
 ---
 
+## 2025-03-06
+
+Today I was working on the mail module and implemented a two sub commands:
+list and move. 
+
+Without any arguments, list generates displays the taskids of mail configured tasks.
+Pass a taskid and it will list the folders of the account associated with the task.
+
+The move command allows you to move a mail messages from a source to a target in the same mail account.
+
+both these oprations need unit tests and documentation.
+
+
+## linked directories
+
+The project uses sym-links to link the config, data, tasks, flows, and patches directories to the project root. This allows for the project to be used as a library in other projects.
+
+## util
+
+lib/util.js is a class that is used to manage the utility functions for the project. It is a singleton that is used to manage the utility functions for the project. 
+
+aawaf implements tasks and flows. _util.js is a class that is used to manage the utility functions for a specific task  or flow or group of tasks and flows. It extense the common util function in lib.
+
 ## 2025-02-17
 
 While building the project, there are 5 directories that are important to understand:

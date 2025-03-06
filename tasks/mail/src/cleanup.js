@@ -12,12 +12,12 @@ export async function cleanupCommand(args, options, logger) {
 
   if (config == null) {
     u.info("nothing to do")
-    return 0
+    return u.ENOTFOUND
   }
 
   if (config.name !== args.taskid) {
     u.error(`${config.name} != ${args.taskid}`)
-    return 1
+    return u.ENOTASK
   }
 
   if (options.verbose) {
@@ -75,6 +75,8 @@ export async function cleanupCommand(args, options, logger) {
     }
   }
 
+  // ----------------------------------------------------------------------------
+  // connect to mail server
   // ----------------------------------------------------------------------------
   const client = u.getImapFlow(config.mail)
   try {

@@ -23,6 +23,7 @@
     "chalk": "^5.4.1",
     "chalk-pipe": "^6.2.0",
     "imapflow": "^1.0.181",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "mailparser": "^3.7.2"
   }
 }

@@ -44,6 +44,32 @@ try {
     .option("-v, --verbose", "verbose mode")
     .action(commands.cleanup)
 
+  // =============================================================================
+  // move
+  // =============================================================================
+  program
+    .command("move", "Move messages between folders")
+    .argument("<taskid>", "The configuration name for this configured task")
+    .argument("<source>", "Source folder to move messages from")
+    .argument("<target>", "Target folder to move messages to")
+    .option("-l, --limit", `limit, default ${u.getScanLimit()}`)
+    .option("-u, --unread", "only move unread messages")
+    .option("-r, --read", "only move read messages")
+    .option("-t, --tagged", "only move tagged/flagged messages")
+    .option("-q, --quiet", "quiet mode")
+    .option("-v, --verbose", "verbose mode")
+    .action(commands.move)
+
+  // =============================================================================
+  // list
+  // =============================================================================
+  program
+    .command("list", "List tasks or folders")
+    .argument("[taskid]", "The configuration name for this configured task")
+    .option("-q, --quiet", "quiet mode")
+    .option("-v, --verbose", "verbose mode")
+    .action(commands.list)
+
   program.parse(process.argv)
 } catch (e) {
   console.error(e)

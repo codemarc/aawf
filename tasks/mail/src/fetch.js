@@ -1,5 +1,5 @@
-import util from "./util.js"
-export const u = new util()
+import util from "./_util.js"
+const u = new util()
 
 // ----------------------------------------------------------------------------
 // getSearchOptions

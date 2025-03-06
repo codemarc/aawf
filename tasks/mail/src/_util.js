@@ -1,4 +1,6 @@
-import Util from "./util.js"
+import util from "./util.js"
+
+// Doc:  https://imapflow.com/
 import { ImapFlow } from "imapflow"
 
 // =============================================================================
@@ -7,7 +9,7 @@ import { ImapFlow } from "imapflow"
 // The `util` class provides utility functions and properties the specific task
 // or flow
 // =============================================================================
-export default class _util extends Util {
+export default class _util extends util {
   constructor(logger, args, options, name = "tasks-mail") {
     super(logger, args, options, name)
 
@@ -44,20 +46,27 @@ export default class _util extends Util {
   }
 
   getImapFlow(cfg, nologger) {
-    return new ImapFlow({
+    const config = {
       host: cfg.host,
       port: cfg.port,
       secure: true,
       auth: { user: cfg.user, pass: cfg.password },
       logger: nologger ?? false
-    })
+    }
+    return new ImapFlow(config)
   }
 
   getFolderPath = async (client, name) => {
     if (name?.toLowerCase() === "inbox") {
       return "INBOX"
     }
+
     const folders = await client.list()
+
+    if (!Number.isNaN(name)) {
+      return folders[name].path
+    }
+
     const folder = folders.find((f) => f.name === name)?.path
 
     if (name === "Archive") {
